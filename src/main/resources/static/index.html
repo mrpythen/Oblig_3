@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        #antall{
+            width:20%;
+        }
+        span{
+            color:red;
+            display:none;
+        }
+        #filmListe td {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Bestilling av kinobilletter</h1>
+<form>
+    <table class="table">
+        <tr>
+            <td>Velg film:</td>
+            <td>
+                <select id="filmer">
+                    <option value="" style="display:none;">Velg film her</option>
+                    <option id="a">Bob Marley: One Love</option>
+                    <option id="b">Madame Web</option>
+                    <option id="c">Victoria Må Dø</option>
+                    <option id="d">The Beekeeper</option>
+                </select>
+                <span id="filmFeil">Du må velge film</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Antall:</td>
+            <td>
+                <input id="antall" type="number">
+                <span id="antallFeil">Du må skrive noe inn i antall</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Fornavn:</td>
+            <td>
+                <input id="fornavn" type="text">
+                <span id="fornavnFeil">Du må skrive noe i fornavn</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Etternavn:</td>
+            <td>
+                <input id="etternavn" type="text">
+                <span id="etternavnFeil">Du må skrive noe i etternavn</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Telefonnr:</td>
+            <td>
+                <input id="telefonnr" type="number">
+                <span id="telefonnrFeil">Du må skrive noe i telefonnr</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Epost:</td>
+            <td>
+                <input id="epost" type="email">
+                <span id="epostFeil">Du må skrive noe i epost</span>
+            </td>
+        </tr>
+    </table>
+    <button class="btn btn-primary" id="kjøpBillett">Kjøp billett</button>
+</form>
+
+<h2>Alle billetter</h2>
+<div id="filmListe"></div>
+<button class="btn btn-danger" id="slettAlle">Slett alle billettene</button>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="script.js"></script>
+</body>
+</html>
