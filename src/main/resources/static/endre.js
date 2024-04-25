@@ -1,35 +1,37 @@
-$(document).ready(function (){
+$(document).ready(function () {
     const id = window.location.search.substring(1);
-    const url = "/hentEn?"+id;
-    $.get(url,function(bilett){
-        $("#id").val(bilett.id); // må ha med id inn skjemaet, hidden i html
+    const url = "/hentEn?" + id;
+    $.get(url, function (bilett) {
+        $("#id").val(bilett.id);
+        $("#filmer").val(bilett.film);
         $("#antall").val(bilett.antall);
         $("#fornavn").val(bilett.fornavn);
         $("#etternavn").val(bilett.etternavn);
         $("#telefonnr").val(bilett.telefonnr);
         $("#epost").val(bilett.epost);
+    });
 
+    $("#Endre").click(function (event) {
+        event.preventDefault();
+
+        const kunde = {
+            id: $("#id").val(),
+            film: $("#filmer").val(),
+            antall: $("#antall").val(),
+            fornavn: $("#fornavn").val(),
+            etternavn: $("#etternavn").val(),
+            telefonnr: $("#telefonnr").val(),
+            epost: $("#epost").val()
+        };
+
+        if (!valider(kunde.film, kunde.antall, kunde.fornavn, kunde.etternavn, kunde.telefonnr, kunde.epost)) return;
+
+
+        $.post("/endreEn", kunde, function () {
+            window.location.href = "/";
+        });
     });
 });
-
- $("#Endre").click(function (){
-     const kunde = {
-         id : $("#id").val(),
-         film : $("#filmer").val(),
-         antall : $("#antall").val(),
-         fornavn : $("#fornavn").val(),
-         etternavn : $("#etternavn").val(),
-         telefonnr : $("#telefonnr").val(),
-         epost : $("#epost").val()
-
-     };
-     console.log(kunde)
-     alert(kunde);
-
-     $.post("/endreEn",kunde,function(){
-         window.location.href = "/";
-     });
- });
 
 function valider(filmer, antall, fornavn, etternavn, telefonnr, epost) {
     let gyldig = true;
@@ -39,7 +41,7 @@ function valider(filmer, antall, fornavn, etternavn, telefonnr, epost) {
     gyldig &= validerFelt(etternavn, "etternavnFeil", "Du må skrive noe i etternavn");
     gyldig &= validerTelefonnr(telefonnr, "telefonnrFeil", "Telefonnummeret er ikke gyldig");
     gyldig &= validerEpost(epost, "epostFeil", "Epostadressen er ikke gyldig");
-    return gyldig;
+    return !!gyldig;
 }
 
 function validerFelt(verdi, feilId, feilmelding) {
