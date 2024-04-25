@@ -11,7 +11,6 @@ public class KinobilettController {
    @Autowired
    private BilettRepository rep;
 
-
     @PostMapping("/lagre")
     public void lagreBillett(@RequestBody Kinobilett bilett) {
         rep.lagreBilett(bilett);
@@ -27,4 +26,21 @@ public class KinobilettController {
     public void slettAlle() {
         rep.slettAlleBiletter();
     }
+
+    @GetMapping("/hentEn")
+    public Kinobilett Kinobilett (int id){
+        return rep.hentEn(id);
+    }
+    @PostMapping("/endreEn")
+    public void endreEn(Kinobilett Kinobilett){
+        rep.endreEn(Kinobilett);
+    }
+
+    @GetMapping("/slettEn")
+    public void slettEn(int id){
+
+        rep.slettEn(id);
+    }
+
 }
+

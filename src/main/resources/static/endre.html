@@ -13,10 +13,12 @@
             display:none;
         }
     </style>
+
 </head>
 <body>
-<h1>Bestilling av kinobilletter</h1>
-<form>
+<h1>Endre bilett</h1>
+<form class= "form">
+    <input type="hidden" id="id"/>
     <table class="table">
         <tr>
             <td>Velg film:</td>
@@ -68,14 +70,11 @@
             </td>
         </tr>
     </table>
-    <button class="btn btn-primary" id="kjøpBillett">Kjøp billett</button>
+    <button class="btn btn-primary" id="Endre">Endre</button>
 </form>
 
-<h2>Alle billetter</h2>
-<div id="filmListe"></div>
-<button class="btn btn-danger" id="slettAlle">Slett alle billettene</button>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="script.js"></script>
+<script src="endre.js"></script>
 </body>
 </html>

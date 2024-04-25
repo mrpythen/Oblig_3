@@ -109,9 +109,18 @@ function hentAlleBilletter() {
 }
 
 function visBilletter(billettListe) {
-    let ut = "<table class='table table-striped'><tr><th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th></tr>";
+    let ut = "<table class='table table-striped'><tr><th>Film</th><th>Antall</th><th>Fornavn</th><th>Etternavn</th><th>Telefonnr</th><th>Epost</th><th></th><th></th></tr>";
     billettListe.forEach(billett => {
-        ut += `<tr><td>${billett.film}</td><td>${billett.antall}</td><td>${billett.fornavn}</td><td>${billett.etternavn}</td><td>${billett.telefonnr}</td><td>${billett.epost}</td></tr>`;
+        ut += `<tr>
+          <td>${billett.film}</td>
+          <td>${billett.antall}</td>
+          <td>${billett.fornavn}</td>
+          <td>${billett.etternavn}</td>
+          <td>${billett.telefonnr}</td>
+          <td>${billett.epost}</td>
+          <td><a class='btn btn-primary' href='endre.html?id=${billett.id}'>Endre</a></td>
+          <td><button class='btn btn-danger' onclick='slettEn(${billett.id})'>Slett</button></td>
+      </tr>`;
     });
     ut += "</table>";
     document.getElementById("filmListe").innerHTML = ut;
@@ -134,3 +143,12 @@ $("#slettAlle").click(function slettAlle(){
       hentAlleBilletter();
     });
 });
+function slettEn(id) {
+    const url = "/slettEn?id="+id;
+    $.get( url, function() {
+        window.location.href = 'index.html';
+    });
+};
+
+
+

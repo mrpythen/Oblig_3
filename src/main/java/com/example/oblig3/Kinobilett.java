@@ -1,6 +1,7 @@
 package com.example.oblig3;
 
 public class Kinobilett {
+    private int id;
     private String film;
     private int antall;
     private String fornavn;
@@ -11,7 +12,8 @@ public class Kinobilett {
     // Konstruktører
 
 
-    public Kinobilett(String film, int antall, String fornavn, String etternavn, String telefonnr, String epost) {
+    public Kinobilett(int id, String film, int antall, String fornavn, String etternavn, String telefonnr, String epost) {
+        this.id = id;
         this.film = film;
         this.antall = antall;
         this.fornavn = fornavn;
@@ -20,7 +22,14 @@ public class Kinobilett {
         this.epost = epost;
     }
 
-    // Getters og setters
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getFilm() {
         return film;
     }

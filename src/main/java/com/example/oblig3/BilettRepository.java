@@ -26,5 +26,23 @@ public class BilettRepository {
         String sql = "DELETE FROM Kinobilett";
         db.update(sql);
     }
+
+    public Kinobilett hentEn(int id) {
+
+        String sql = "SELECT * FROM Kinobilett WHERE id=?";
+        Kinobilett kinobilett = db.queryForObject(sql, BeanPropertyRowMapper.newInstance(Kinobilett.class), id);
+        return kinobilett;
+    }
+
+    public void endreEn(Kinobilett kinobilett){
+        String sql = "UPDATE Kinobilett SET film=?, antall=?, fornavn=?,etternavn=?, telefonnr=?, epost=? where id=?";
+        db.update(sql, kinobilett.getFilm(), kinobilett.getAntall(), kinobilett.getFornavn(), kinobilett.getEtternavn(),
+                kinobilett.getTelefonnr(), kinobilett.getEpost(), kinobilett.getId());
+    }
+
+    public void slettEn(int id) {
+        String sql = "DELETE FROM Kinobilett WHERE id=?";
+        db.update(sql,id);
+    }
 }
 
